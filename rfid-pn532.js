@@ -49,10 +49,11 @@ function RFID (hardware, options, callback) {
 
   self.hardware = hardware;
   self.ready = false;
-  self.irq = hardware.digital[2];
+  self.irq = hardware.digital[1];
+  console.log(self.irq)
   self.irq.input();
 
-  self.nRST = hardware.digital[1];
+  self.nRST = hardware.digital[2];
 
   // Toggle reset every time we initialize
   self.nRST.write(false, function continueInit() {

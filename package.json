@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "www.github.com/tessel/t2-cli",
+  "repository": "git://github.com/nodebotanist/M24SR64-Tessel.git",
   "keywords": [
     "Tessel"
   ],

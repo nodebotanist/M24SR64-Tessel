@@ -1,15 +1,16 @@
-'use strict';
+const tessel = require('tessel')
+var rfidlib = require('./rfid-pn532') // Replace '../' with 'rfid-pn532' in your own code
 
-// Import the interface to Tessel hardware
-const tessel = require('tessel');
+var rfid = rfidlib.use(tessel.port['B']) 
 
-// Turn one of the LEDs on to start.
-tessel.led[2].on();
+rfid.on('ready', function (version) {
+  console.log('Ready to read RFID card')
 
-// Blink!
-setInterval(() => {
-  tessel.led[2].toggle();
-  tessel.led[3].toggle();
-}, 100);
+  rfid.on('data', function(card) {
+    console.log('UID:', card.uid.toString('hex'))
+  })
+})
 
-console.log("I'm blinking! (Press CTRL + C to stop)");
+rfid.on('error', function (err) {
+  console.error(err)
+})
